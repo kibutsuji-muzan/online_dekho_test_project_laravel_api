@@ -4,14 +4,14 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+use Illuminate\Database\Eloquent\Model;
+class Story extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
-
+    public $table = 'story';
     /**
      * The attributes that are mass assignable.
      *
@@ -20,10 +20,9 @@ class User extends Authenticatable
     protected $primaryKey = 'id';
     protected $fillable = [
         'id',
-        'username',
-        'first_name',
-        'last_name',
-        'password',
+        'file',
+        'user_id',
+        'product_id'
     ];
 
     /**
@@ -32,8 +31,6 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'password',
-        'remember_token',
         'created_at',
         'updated_at'
     ];
@@ -43,7 +40,4 @@ class User extends Authenticatable
      *
      * @var array<string, string>
      */
-    protected $casts = [
-        'password' => 'hashed',
-    ];
 }

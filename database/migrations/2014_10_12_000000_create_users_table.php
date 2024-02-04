@@ -16,13 +16,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->uuid('member_id')->primary();
+            $table->id('id');
             $table->string('username')->unique();
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('location')->nullable();
-            $table->string('livelocation')->nullable();
-            $table->boolean('status')->default(0);
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
