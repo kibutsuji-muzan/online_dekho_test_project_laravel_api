@@ -31,6 +31,7 @@ class storys extends Controller
             $p = Story::create([
                 'product_id' => $request->product_id,
                 'file' => Storage::disk('public')->url($story_uploaded_path),
+                'views' => 0,
                 'user_id' => $user->username,
             ]);
             return response()->json($p, 200);
@@ -43,6 +44,33 @@ class storys extends Controller
         $user = $request->user();
         $p = Story::where('user_id', $user->username)->get();
         return response()->json($p, 200);
+    }
+
+    function updateViews(Request $request)
+    {
+
+        $story = Story::find($request->id);
+        if ($story) {
+            $story->views = $story->views + 1;
+            $story->save();
+            return response()->json($story, 200);
+        } else {
+            // Story not found
+            return response()->json(['response' => 'story not found'], 200);
+        }
+
+    }
+    function getViews(Request $request)
+    {
+
+        $story = Story::all();
+        if ($story) {
+            return response()->json($story, 200);
+        } else {
+            // Story not found
+            return response()->json(['response' => 'story not found'], 200);
+        }
+
     }
 
 }

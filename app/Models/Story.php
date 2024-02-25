@@ -21,6 +21,7 @@ class Story extends Model
     protected $fillable = [
         'id',
         'file',
+        'views',
         'user_id',
         'product_id'
     ];

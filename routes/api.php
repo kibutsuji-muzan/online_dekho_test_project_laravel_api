@@ -28,6 +28,8 @@ Route::get('get',[products::class,'get'])->middleware('auth:sanctum');
 
 Route::post('story_upload',[storys::class,'upload'])->middleware('auth:sanctum');
 Route::get('story_get',[storys::class,'get'])->middleware('auth:sanctum');
+Route::post('update_view',[storys::class,'updateViews'])->middleware('auth:sanctum');
+Route::post('get_views',[storys::class,'getViews'])->middleware('auth:sanctum');
 // Route::post('update_status',status::class)->middleware('auth:sanctum');
 // Route::post('live_location',livelocation::class)->middleware('auth:sanctum');
 

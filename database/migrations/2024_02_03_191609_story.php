@@ -13,6 +13,7 @@ return new class extends Migration
     {
          Schema::create('story', function (Blueprint $table) {
             $table->id('id');
+            $table->bigInteger('views');
             $table->string('file');
             $table->string('user_id');
             $table->index('user_id');
